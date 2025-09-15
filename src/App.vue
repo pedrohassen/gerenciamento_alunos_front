@@ -22,5 +22,6 @@ html, body, #app {
 
 .v-application {
   min-height: 100vh;
+  min-width: 100vw;
 }
 </style>
