@@ -1,7 +1,9 @@
 <template>
   <v-btn
-    :disabled="loading"
-    :color="color"
+    :loading="loading"
+    :disabled="disabled"
+    :color="buttonColor"
+    :style="{ color: buttonTextColor }"
     block
     @click="$emit('click')"
   >
@@ -15,9 +17,17 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "AtomoButton",
   props: {
-    color: {
+    buttonColor: {
       type: String,
       default: "primary"
+    },
+    buttonTextColor: {
+      type: String,
+      default: "white"
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     loading: {
       type: Boolean,
