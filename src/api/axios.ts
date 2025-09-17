@@ -1,12 +1,12 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+import { getToken } from "../services/authService";
 
 const api = axios.create({
   baseURL: "https://localhost:7188/api",
 });
 
 api.interceptors.request.use((config) => {
-  const token = Cookies.get("token");
+  const token = getToken();
   if (token) {
     config.headers.Authorization = token;
   }

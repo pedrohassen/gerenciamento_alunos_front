@@ -1,11 +1,22 @@
-import axios from "../api/axios";
+import api from "../api/axios";
 import Cookies from "js-cookie";
 
-export async function login(email: string, password: string) {
-  const response = await axios.post("/Usuario/login", { email, password });
+export async function login(email: string, senha: string) {
+  const response = await api.post("/Usuario/login", { email, senha });
 
   Cookies.set("token", response.data.token, { expires: 1 });
 
+  return response.data;
+}
+
+export async function register(nome: string, email: string, senha: string) {
+  const response = await api.post("/Usuario/registrar", {
+    nome,
+    email,
+    senha,
+  });
+
+  Cookies.set("token", response.data.token, { expires: 1 });
   return response.data;
 }
 
