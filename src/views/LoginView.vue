@@ -1,15 +1,15 @@
 <template>
   <v-container class="d-flex justify-center align-center" style="height: 100vh;">
-    <MoleculaLoginForm />
+    <OrganismoForm mode="login" />
   </v-container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import MoleculaLoginForm from "../components/atomicDesign/molecule/MoleculaLoginForm.vue";
+import OrganismoForm from "../components/atomicDesign/organism/OrganismoForm.vue";
 
 export default defineComponent({
   name: "LoginView",
-  components: { MoleculaLoginForm },
+  components: { OrganismoForm },
 });
 </script>
