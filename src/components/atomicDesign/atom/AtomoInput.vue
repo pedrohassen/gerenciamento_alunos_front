@@ -6,9 +6,8 @@
     class="classic-input"
     @input="onInput"
     :rules="rules"
-    outlined
-    dense
     hide-details="auto"
+    style="width: 100%;"
   ></v-text-field>
 </template>
 
@@ -52,10 +51,10 @@ export default defineComponent({
 <style scoped>
 .classic-input {
   width: 100%;
-  padding: 10px 12px;
+  padding: 5px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   background-color: #fff;
   box-sizing: border-box;
@@ -70,5 +69,14 @@ export default defineComponent({
 .classic-input-error {
   border-color: #f44336;
 }
+
+.classic-input ::v-deep(.v-input__slot) {
+  width: 100% !important;
+}
+
+.classic-input ::v-deep(input) {
+  width: 100% !important;
+}
+
 </style>
 
