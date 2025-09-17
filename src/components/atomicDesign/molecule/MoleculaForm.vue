@@ -44,13 +44,7 @@ import { defineComponent, type PropType } from "vue";
 import AtomoInput from "../atom/AtomoInput.vue";
 import AtomoButton from "../atom/AtomoButton.vue";
 import AtomoTexto from "../atom/AtomoTexto.vue";
-
-interface InputConfig {
-  name: string;
-  type: string;
-  placeholder: string;
-  rules: any[];
-}
+import type { InputConfig } from "../../../utils/types/inputs";
 
 export default defineComponent({
   name: "MoleculaForm",
