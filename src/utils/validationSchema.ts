@@ -6,7 +6,7 @@ export const loginSchema = z.object({
     .nonempty("O e-mail é obrigatório")
     .email("E-mail inválido"),
 
-  password: z
+  senha: z
     .string()
     .nonempty("A senha é obrigatória")
     .regex(
@@ -17,9 +17,9 @@ export const loginSchema = z.object({
 
 export const registerSchema = loginSchema.extend({
   nome: z.string().nonempty("O nome é obrigatório"),
-  confirmPassword: z.string().nonempty("Confirmação de senha obrigatória"),
-}).refine((data) => data.password === data.confirmPassword, {
-  path: ["confirmPassword"],
+  confirmarSenha: z.string().nonempty("Confirmação de senha obrigatória"),
+}).refine((data) => data.senha === data.confirmarSenha, {
+  path: ["confirmarSenha"],
   message: "As senhas não coincidem",
 });
 
