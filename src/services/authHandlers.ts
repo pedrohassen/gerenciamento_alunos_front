@@ -1,4 +1,4 @@
-import { login, register } from "./authService";
+import { login, register, logout } from "./authService";
 import router from "../router";
 import { loginSchema, registerSchema } from "../utils/validationSchema";
 
@@ -37,6 +37,18 @@ export const handleRegister = async (
     } else {
       alert("Falha no cadastro: " + (err.response?.data?.message || err.message));
     }
+  } finally {
+    setLoading(false);
+  }
+};
+
+export const handleLogout = (setLoading: (val: boolean) => void) => {
+  setLoading(true);
+  try {
+    logout();
+    router.push("/login");
+  } catch (err: any) {
+    alert("Falha ao deslogar: " + (err.response?.data?.message || err.message));
   } finally {
     setLoading(false);
   }
