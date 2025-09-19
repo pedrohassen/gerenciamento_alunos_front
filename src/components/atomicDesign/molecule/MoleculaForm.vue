@@ -1,11 +1,11 @@
 <template>
   <v-card class="pa-4" width="40%">
     <v-card-title>
-      <AtomoTexto tag="h1" class="text-h4">{{ pageTitle }}</AtomoTexto>
+      <AtomoTexto tag="h1" class="text-h5">{{ pageTitle }}</AtomoTexto>
     </v-card-title>
 
     <v-card-title>
-      <AtomoTexto tag="h2" class="text-h5">{{ title }}</AtomoTexto>
+      <AtomoTexto tag="h2" class="text-h6">{{ title }}</AtomoTexto>
     </v-card-title>
 
     <v-card-text class="pa-0">
