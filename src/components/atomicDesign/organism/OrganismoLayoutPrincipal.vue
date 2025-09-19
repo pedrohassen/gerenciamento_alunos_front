@@ -3,13 +3,13 @@
     <MoleculaMenuSuperior :titulo="titulo" @toggleDrawer="toggleDrawer">
       <template #actions>
         <AtomoButton buttonColor="transparent" buttonTextColor="#fff" @click="logout">
-          <AtomoTexto tag="span" size="14px" weight="600" color="#fff">
+          <AtomoText tag="span" size="14px" weight="600" color="#fff">
             {{ logoutText }}
-          </AtomoTexto>
+          </AtomoText>
         </AtomoButton>
       </template>
     </MoleculaMenuSuperior>
-    <MoleculaMenuLateral v-model="drawerOpen" :itens="navigationItens" @navigate="irPara" />
+    <MoleculaMenuLateral v-model="drawerOpen" :itens="navigationItens" @navigate="navigateTo" />
 
     <v-main>
       <v-container fluid>
@@ -27,11 +27,11 @@ import MoleculaMenuSuperior from '../molecule/MoleculaMenuSuperior.vue';
 import { menuItens } from '../../../utils/navigation';
 import { handleLogout } from '../../../services/authHandlers';
 import AtomoButton from '../atom/AtomoButton.vue';
-import AtomoTexto from '../atom/AtomoTexto.vue';
+import AtomoText from '../atom/AtomoText.vue';
 
 export default defineComponent({
   name: 'OrganismoLayoutPrincipal',
-  components: { MoleculaMenuSuperior, MoleculaMenuLateral, AtomoButton, AtomoTexto },
+  components: { MoleculaMenuSuperior, MoleculaMenuLateral, AtomoButton, AtomoText },
   props: {
     titulo: { type: String, default: 'Minha Aplicação' }
   },
@@ -49,7 +49,7 @@ export default defineComponent({
 
     const router = useRouter();
 
-    const irPara = async (rota: RouteLocationRaw) => {
+    const navigateTo = async (rota: RouteLocationRaw) => {
       try {
         if (rota) {
           await router.push(rota);
@@ -60,7 +60,7 @@ export default defineComponent({
       }
     };
 
-    return { drawerOpen, toggleDrawer, irPara, navigationItens, logoutText, logout };
+    return { drawerOpen, toggleDrawer, navigateTo, navigationItens, logoutText, logout };
   }
 });
 </script>

@@ -8,12 +8,12 @@
     <v-list dense class="menu-list">
       <v-list-item v-for="item in itens" :key="item.text" @click="$emit('navigate', item.route)" class="menu-item">
         <v-list-item-icon>
-          <AtomoIcone :nome="item.icon || 'help_outline'" tamanho="20" cor="#000" />
+          <AtomoIcon :nome="item.icon || 'help_outline'" tamanho="20" cor="#000" />
         </v-list-item-icon>
         <v-list-item-content class="ml-3">
-          <AtomoTexto tag="span" size="14px" weight="500">
+          <AtomoText tag="span" size="14px" weight="500">
             {{ item.text }}
-          </AtomoTexto>
+          </AtomoText>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -22,13 +22,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch, type PropType } from 'vue';
-import AtomoTexto from '../atom/AtomoTexto.vue';
-import AtomoIcone from '../atom/AtomoIcone.vue';
+import AtomoText from '../atom/AtomoText.vue';
+import AtomoIcon from '../atom/AtomoIcon.vue';
 import type { MenuItem } from '../../../utils/types/menu';
 
 export default defineComponent({
   name: 'MoleculaMenuLateral',
-  components: { AtomoTexto, AtomoIcone },
+  components: { AtomoText, AtomoIcon },
   props: {
     modelValue: {
       type: Boolean,

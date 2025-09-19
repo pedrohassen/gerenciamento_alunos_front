@@ -1,11 +1,11 @@
 <template>
   <v-card class="pa-4" width="40%">
     <v-card-title>
-      <AtomoTexto tag="h1" class="text-h5">{{ pageTitle }}</AtomoTexto>
+      <AtomoText tag="h1" class="text-h5">{{ pageTitle }}</AtomoText>
     </v-card-title>
 
     <v-card-title>
-      <AtomoTexto tag="h2" class="text-h6">{{ title }}</AtomoTexto>
+      <AtomoText tag="h2" class="text-h6">{{ title }}</AtomoText>
     </v-card-title>
 
     <v-card-text class="pa-0">
@@ -43,12 +43,12 @@
 import { defineComponent, type PropType } from "vue";
 import AtomoInput from "../atom/AtomoInput.vue";
 import AtomoButton from "../atom/AtomoButton.vue";
-import AtomoTexto from "../atom/AtomoTexto.vue";
+import AtomoText from "../atom/AtomoText.vue";
 import type { InputConfig } from "../../../utils/types/inputs";
 
 export default defineComponent({
   name: "MoleculaForm",
-  components: { AtomoInput, AtomoButton, AtomoTexto },
+  components: { AtomoInput, AtomoButton, AtomoText },
   props: {
     pageTitle: { type: String, required: true },
     title: { type: String, required: true },

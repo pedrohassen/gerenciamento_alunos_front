@@ -5,13 +5,13 @@
       :style="{ minWidth: '40px', width: '40px', height: '40px', padding: 0 }"
       @click="$emit('toggleDrawer')"
     >
-      <AtomoIcone nome="menu" cor="#fff" tamanho="24" />
+      <AtomoIcon nome="menu" cor="#fff" tamanho="24" />
     </AtomoButton>
 
     <v-toolbar-title>
-      <AtomoTexto tag="h1" size="18px" weight="600" color="#fff">
+      <AtomoText tag="h1" size="18px" weight="600" color="#fff">
         {{ titulo }}
-      </AtomoTexto>
+      </AtomoText>
     </v-toolbar-title>
     <v-spacer />
 
@@ -23,13 +23,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import AtomoTexto from '../atom/AtomoTexto.vue';
-import AtomoIcone from '../atom/AtomoIcone.vue';
+import AtomoText from '../atom/AtomoText.vue';
+import AtomoIcon from '../atom/AtomoIcon.vue';
 import AtomoButton from '../atom/AtomoButton.vue';
 
 export default defineComponent({
   name: 'MoleculaMenuSuperior',
-  components: { AtomoTexto, AtomoButton, AtomoIcone },
+  components: { AtomoText, AtomoButton, AtomoIcon },
   props: {
     titulo: {
       type: String,
