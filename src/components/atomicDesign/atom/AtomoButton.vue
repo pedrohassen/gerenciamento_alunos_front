@@ -4,7 +4,6 @@
     :disabled="disabled"
     :color="buttonColor"
     :style="{ color: buttonTextColor }"
-    block
     @click="$emit('click')"
   >
     <slot />
