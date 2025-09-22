@@ -1,5 +1,5 @@
 <template>
-  <MoleculaForm
+  <MoleculeForm
     :pageTitle="pageTitle"
     :title="title"
     :buttonText="buttonText"
@@ -12,34 +12,34 @@
     :onSubmit="onSubmit"
   >
     <template #actions>
-      <MoleculaTextoLink
+      <MoleculeTextLink
         v-if="mode === 'login'"
         text="Não tem conta?"
         linkText="Cadastre-se"
         to="/register"
       />
-      <MoleculaTextoLink
+      <MoleculeTextLink
         v-else
         text="Já tem conta?"
         linkText="Faça login"
         to="/login"
       />
     </template>
-  </MoleculaForm>
+  </MoleculeForm>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import MoleculaForm from "../molecule/MoleculaForm.vue";
-import { useOrganismoForm } from "../../../composables/useOrganismoForm";
-import MoleculaTextoLink from "../molecule/MoleculaTextoLink.vue";
+import MoleculeForm from "../molecule/MoleculeForm.vue";
+import { useOrganismForm } from "../../../composables/useOrganismForm";
+import MoleculeTextLink from "../molecule/MoleculeTextLink.vue";
 
 export default defineComponent({
-  name: "OrganismoForm",
-  components: { MoleculaForm, MoleculaTextoLink },
+  name: "OrganismForm",
+  components: { MoleculeForm, MoleculeTextLink },
   props: { mode: { type: String, required: true } },
   setup(props) {
-    return useOrganismoForm(props.mode as "login" | "register");
+    return useOrganismForm(props.mode as "login" | "register");
   },
 });
 </script>

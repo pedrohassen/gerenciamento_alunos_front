@@ -1,20 +1,16 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-container>
-        <AtomoTexto class="text-h4">Bem-vindo ao Gerenciamento de Alunos!</AtomoTexto>
-      </v-container>
-    </v-main>
-  </v-app>
+  <AtomText tag="span" size="20px" weight="600" color="#000" class="mt-16">
+    Bem vindo!
+  </AtomText>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import AtomoTexto from '../components/atomicDesign/atom/AtomoTexto.vue';
+import AtomText from '../components/atomicDesign/atom/AtomText.vue';
 
 export default defineComponent({
   components: {
-    AtomoTexto
+    AtomText
   }
 });
 </script>

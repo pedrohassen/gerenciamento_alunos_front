@@ -3,31 +3,31 @@ import { registerSchema, makeRule } from "../utils/validationSchema";
 import { handleRegister } from "../services/authHandlers";
 
 export function useRegisterForm() {
-  const nome = ref("");
+  const name = ref("");
   const email = ref("");
-  const senha = ref("");
-  const confirmarSenha = ref("");
+  const password = ref("");
+  const confirmPassword = ref("");
   const loading = ref(false);
 
-  const nameRules = [makeRule(registerSchema, "nome")];
+  const nameRules = [makeRule(registerSchema, "name")];
   const emailRules = [makeRule(registerSchema, "email")];
-  const passwordRules = [makeRule(registerSchema, "senha")];
-  const confirmPasswordRules = [makeRule(registerSchema, "confirmarSenha")];
+  const passwordRules = [makeRule(registerSchema, "password")];
+  const confirmPasswordRules = [makeRule(registerSchema, "confirmPassword")];
 
   const onSubmit = () =>
     handleRegister(
-      nome.value,
+      name.value,
       email.value,
-      senha.value,
-      confirmarSenha.value,
+      password.value,
+      confirmPassword.value,
       (val: boolean) => (loading.value = val)
     );
 
   return {
-    nome,
+    name,
     email,
-    senha,
-    confirmarSenha,
+    password,
+    confirmPassword,
     loading,
     nameRules,
     emailRules,

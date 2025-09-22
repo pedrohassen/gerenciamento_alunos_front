@@ -14,7 +14,7 @@
 import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-  name: 'AtomoLink',
+  name: 'AtomLink',
   props: {
     to: { type: String, default: '' },
     href: { type: String, default: '' },

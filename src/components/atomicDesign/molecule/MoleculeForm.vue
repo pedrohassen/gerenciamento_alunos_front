@@ -1,16 +1,16 @@
 <template>
   <v-card class="pa-4" width="40%">
     <v-card-title>
-      <AtomoTexto tag="h1" class="text-h4">{{ pageTitle }}</AtomoTexto>
+      <AtomText tag="h1" class="text-h5">{{ pageTitle }}</AtomText>
     </v-card-title>
 
     <v-card-title>
-      <AtomoTexto tag="h2" class="text-h5">{{ title }}</AtomoTexto>
+      <AtomText tag="h2" class="text-h6">{{ title }}</AtomText>
     </v-card-title>
 
     <v-card-text class="pa-0">
       <form @submit.prevent="onSubmit">
-        <AtomoInput
+        <AtomInput
           v-for="input in inputs"
           :key="input.name"
           v-model="values[input.name].value"
@@ -20,7 +20,7 @@
           class="mb-4"
         />
 
-        <AtomoButton
+        <AtomButton
           :loading="loading"
           :disabled="!isFormValid"
           type="submit"
@@ -29,7 +29,7 @@
           block
         >
           {{ buttonText }}
-        </AtomoButton>
+        </AtomButton>
       </form>
     </v-card-text>
 
@@ -41,14 +41,14 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
-import AtomoInput from "../atom/AtomoInput.vue";
-import AtomoButton from "../atom/AtomoButton.vue";
-import AtomoTexto from "../atom/AtomoTexto.vue";
+import AtomInput from "../atom/AtomInput.vue";
+import AtomButton from "../atom/AtomButton.vue";
+import AtomText from "../atom/AtomText.vue";
 import type { InputConfig } from "../../../utils/types/inputs";
 
 export default defineComponent({
-  name: "MoleculaForm",
-  components: { AtomoInput, AtomoButton, AtomoTexto },
+  name: "MoleculeForm",
+  components: { AtomInput, AtomButton, AtomText },
   props: {
     pageTitle: { type: String, required: true },
     title: { type: String, required: true },

@@ -6,7 +6,7 @@ import type { LoginFormValues, RegisterFormValues } from "../utils/types/forms";
 
 type FormType = "login" | "register";
 
-export function useOrganismoForm(initialType: FormType) {
+export function useOrganismForm(initialType: FormType) {
   const type = ref<FormType>(initialType);
   const currentForm = computed<LoginFormValues | RegisterFormValues>(() => (type.value === "login" ? useLoginForm() : useRegisterForm()));
   const inputs = computed(() => (type.value === "login" ? loginInputs : registerInputs));

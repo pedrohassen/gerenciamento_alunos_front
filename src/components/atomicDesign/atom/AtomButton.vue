@@ -4,7 +4,6 @@
     :disabled="disabled"
     :color="buttonColor"
     :style="{ color: buttonTextColor }"
-    block
     @click="$emit('click')"
   >
     <slot />
@@ -15,7 +14,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AtomoButton",
+  name: "AtomButton",
   props: {
     buttonColor: {
       type: String,
