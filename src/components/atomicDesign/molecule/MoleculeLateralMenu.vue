@@ -5,16 +5,20 @@
     :width="$vuetify.display.smAndUp ? 200 : 300"
     :clipped="$vuetify.display.smAndUp"
   >
-    <v-list dense class="menu-list">
-      <v-list-item v-for="item in itens" :key="item.text" @click="$emit('navigate', item.route)" class="menu-item">
-        <v-list-item-icon>
-          <AtomoIcon :nome="item.icon || 'help_outline'" tamanho="20" cor="#000" />
-        </v-list-item-icon>
-        <v-list-item-content class="ml-3">
-          <AtomoText tag="span" size="14px" weight="500">
-            {{ item.text }}
-          </AtomoText>
-        </v-list-item-content>
+    <v-list density="compact" class="menu-list">
+      <v-list-item
+        v-for="item in itens"
+        :key="item.text"
+        @click="$emit('navigate', item.route)"
+        class="menu-item"
+      >
+        <template #prepend>
+          <AtomIcon :name="item.icon || 'help_outline'" size="20" color="#000" />
+        </template>
+
+        <AtomText tag="span" size="14px" weight="500" class="ml-3">
+          {{ item.text }}
+        </AtomText>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -22,13 +26,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch, type PropType } from 'vue';
-import AtomoText from '../atom/AtomoText.vue';
-import AtomoIcon from '../atom/AtomoIcon.vue';
+import AtomText from '../atom/AtomText.vue';
+import AtomIcon from '../atom/AtomIcon.vue';
 import type { MenuItem } from '../../../utils/types/menu';
 
 export default defineComponent({
-  name: 'MoleculaMenuLateral',
-  components: { AtomoText, AtomoIcon },
+  name: 'MoleculeLateralMenu',
+  components: { AtomText, AtomIcon },
   props: {
     modelValue: {
       type: Boolean,
@@ -45,10 +49,10 @@ export default defineComponent({
     const open = ref(props.modelValue);
 
     watch(open, (val) => emit('update:modelValue', val));
-    watch(() => props.modelValue, (val) => open.value = val);
+    watch(() => props.modelValue, (val) => (open.value = val));
 
     return { open };
-  }
+  },
 });
 </script>
 

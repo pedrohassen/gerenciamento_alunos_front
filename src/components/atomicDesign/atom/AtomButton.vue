@@ -14,7 +14,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AtomoButton",
+  name: "AtomButton",
   props: {
     buttonColor: {
       type: String,

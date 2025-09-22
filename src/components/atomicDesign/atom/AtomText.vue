@@ -8,7 +8,7 @@
 import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-  name: 'AtomoText',
+  name: 'AtomText',
   props: {
     tag: { type: String, default: 'span' },
     size: { type: String, default: '14px' },

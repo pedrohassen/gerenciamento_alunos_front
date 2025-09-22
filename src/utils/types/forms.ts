@@ -7,10 +7,10 @@ export type BaseFormValues = {
 
 export type LoginFormValues = BaseFormValues & {
   email: Ref<string>;
-  senha: Ref<string>;
+  password: Ref<string>;
 };
 
 export type RegisterFormValues = LoginFormValues & {
-  nome: Ref<string>;
-  confirmarSenha: Ref<string>;
+  name: Ref<string>;
+  confirmPassword: Ref<string>;
 };

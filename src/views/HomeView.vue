@@ -1,16 +1,16 @@
 <template>
-  <AtomoText tag="span" size="20px" weight="600" color="#000" class="mt-16">
+  <AtomText tag="span" size="20px" weight="600" color="#000" class="mt-16">
     Bem vindo!
-  </AtomoText>
+  </AtomText>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import AtomoText from '../components/atomicDesign/atom/AtomoText.vue';
+import AtomText from '../components/atomicDesign/atom/AtomText.vue';
 
 export default defineComponent({
   components: {
-    AtomoText
+    AtomText
   }
 });
 </script>

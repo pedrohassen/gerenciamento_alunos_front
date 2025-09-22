@@ -2,11 +2,11 @@ import { login, register, logout } from "./authService";
 import router from "../router";
 import { loginSchema, registerSchema } from "../utils/validationSchema";
 
-export const handleLogin = async (email: string, senha: string, setLoading: (val: boolean) => void) => {
+export const handleLogin = async (email: string, password: string, setLoading: (val: boolean) => void) => {
   setLoading(true);
   try {
-    loginSchema.parse({ email, senha });
-    await login(email, senha);
+    loginSchema.parse({ email, password });
+    await login(email, password);
     router.push("/home");
   } catch (err: any) {
     if (err?.errors) {
@@ -20,16 +20,16 @@ export const handleLogin = async (email: string, senha: string, setLoading: (val
 };
 
 export const handleRegister = async (
-  nome: string,
+  name: string,
   email: string,
-  senha: string,
-  confirmarSenha: string,
+  password: string,
+  confirmPassword: string,
   setLoading: (val: boolean) => void
 ) => {
   setLoading(true);
   try {
-    registerSchema.parse({ nome, email, senha, confirmarSenha });
-    await register(nome, email, senha);
+    registerSchema.parse({ name, email, password, confirmPassword });
+    await register(name, email, password);
     router.push("/home");
   } catch (err: any) {
     if (err?.errors) {
