@@ -38,5 +38,23 @@ export function makeRule<
   };
 }
 
+export const editProfileSchema = z.object({
+  name: z.string().nonempty("O nome é obrigatório"),
+  email: z.string().nonempty("O e-mail é obrigatório").email("E-mail inválido"),
+  currentPassword: z.string().nonempty("Confirme sua senha atual para salvar"),
+});
+
+export const changePasswordBaseSchema = z.object({
+  newPassword: loginSchema.shape.password,
+  confirmNewPassword: z.string().nonempty("Confirmação de senha obrigatória"),
+});
+
+export const changePasswordSchema = changePasswordBaseSchema.refine(
+  (data) => data.newPassword === data.confirmNewPassword,
+  { path: ["confirmNewPassword"], message: "As senhas não coincidem" }
+);
+
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type RegisterSchema = z.infer<typeof registerSchema>;
+export type EditProfileSchema = z.infer<typeof editProfileSchema>;
+export type ChangePasswordSchema = z.infer<typeof changePasswordSchema>;
