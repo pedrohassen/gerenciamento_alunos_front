@@ -4,8 +4,8 @@ import type { Aluno } from "../utils/types/aluno";
 import { alunoSchema } from "../utils/validationSchema";
 
 function extractErrorMessage(err: any, fallback: string): string {
-  if (err?.errors) {
-    return "Erro no formulário: " + err.errors.map((e: any) => e.message).join(", ");
+  if (err?.issues) {
+    return "Erro no formulário: " + err.issues.map((e: any) => e.message).join(", ");
   }
   return fallback + ": " + (err.response?.data?.mensagem || err.message);
 }
