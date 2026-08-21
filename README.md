@@ -101,5 +101,3 @@ src/
 - **`composables/`** — um por form/concern; expõe `ref`s, `rules` de validação, `loading` e `onSubmit`. Nunca chama a API direto.
 - **`services/*Handlers.ts`** — orquestra: valida com zod, chama o `service`, controla `loading`, trata erro (`err.response?.data?.mensagem`), dispara sucesso.
 - **`services/*Service.ts`** — só a chamada HTTP pura via `api` (axios).
-
-Mais detalhes desse padrão, e o histórico de decisões do projeto, estão no [`CLAUDE.md`](../CLAUDE.md) e no [`TAREFAS.md`](../TAREFAS.md) na raiz do workspace.
