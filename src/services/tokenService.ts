@@ -2,9 +2,8 @@ import { jwtDecode } from "jwt-decode";
 import { getToken } from "./authService";
 
 interface TokenPayload {
-  id: number;
+  sub: string;
   email: string;
-  nome: string;
   exp: number;
 }
 
@@ -14,7 +13,7 @@ export function getUserIdFromToken(): number | null {
 
   try {
     const decoded = jwtDecode<TokenPayload>(token);
-    return decoded.id;
+    return Number(decoded.sub);
   } catch (error) {
     console.error("Erro ao decodificar token:", error);
     return null;
