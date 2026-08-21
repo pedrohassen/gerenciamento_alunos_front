@@ -52,14 +52,8 @@ import { useProfile } from "../../../composables/useProfile";
 import { useEditProfileForm } from "../../../composables/useEditProfileForm";
 import { useChangePasswordForm } from "../../../composables/useChangePasswordForm";
 import { editProfileInputs, changePasswordInputs } from "../../../utils/configInputs";
+import { isFormValid } from "../../../utils/formValidation";
 import type { InfoItem } from "../../../utils/types/cards";
-
-function isFormValid(inputs: { name: string }[], values: Record<string, any>): boolean {
-  return inputs.every((input) => {
-    const field = values[input.name];
-    return field.value && field.value.toString().trim() !== "";
-  });
-}
 
 export default defineComponent({
   name: "OrganismProfile",

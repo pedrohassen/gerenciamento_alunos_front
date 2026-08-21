@@ -54,7 +54,18 @@ export const changePasswordSchema = changePasswordBaseSchema.refine(
   { path: ["confirmNewPassword"], message: "As senhas não coincidem" }
 );
 
+export const alunoSchema = z.object({
+  nome: z.string().nonempty("O nome é obrigatório"),
+  email: z.string().nonempty("O e-mail é obrigatório").email("E-mail inválido"),
+  curso: z.string().nonempty("O curso é obrigatório"),
+  dataNascimento: z
+    .string()
+    .nonempty("A data de nascimento é obrigatória")
+    .refine((val) => new Date(val) <= new Date(), "A data de nascimento não pode ser futura"),
+});
+
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type RegisterSchema = z.infer<typeof registerSchema>;
 export type EditProfileSchema = z.infer<typeof editProfileSchema>;
 export type ChangePasswordSchema = z.infer<typeof changePasswordSchema>;
+export type AlunoSchema = z.infer<typeof alunoSchema>;

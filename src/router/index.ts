@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import PrincipalView from '../views/PrincipalView.vue';
 import ProfileView from '../views/ProfileView.vue';
+import AlunosView from '../views/AlunosView.vue';
 import { isTokenExpired, getUserRoleFromToken } from '../services/tokenService';
 
 const routes = [
@@ -17,7 +18,7 @@ const routes = [
     children: [
       { path: 'home', name: 'Home', component: HomeView },
       { path: 'perfil', name: 'Perfil', component: ProfileView },
-      { path: 'alunos', name: 'Alunos', component: HomeView, meta: { requiresAdmin: true } },
+      { path: 'alunos', name: 'Alunos', component: AlunosView, meta: { requiresAdmin: true } },
     ]
   },
 ];

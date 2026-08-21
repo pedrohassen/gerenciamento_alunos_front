@@ -1,4 +1,4 @@
-import { loginSchema, registerSchema, editProfileSchema, changePasswordBaseSchema, makeRule } from "../utils/validationSchema";
+import { loginSchema, registerSchema, editProfileSchema, changePasswordBaseSchema, alunoSchema, makeRule } from "../utils/validationSchema";
 
 export const loginInputs = [
   { name: "email", type: "text", placeholder: "Email", rules: [makeRule(loginSchema, "email")] },
@@ -21,4 +21,11 @@ export const editProfileInputs = [
 export const changePasswordInputs = [
   { name: "newPassword", type: "password", placeholder: "Nova senha", rules: [makeRule(changePasswordBaseSchema, "newPassword")] },
   { name: "confirmNewPassword", type: "password", placeholder: "Confirmar nova senha", rules: [makeRule(changePasswordBaseSchema, "confirmNewPassword")] },
+];
+
+export const alunoInputs = [
+  { name: "nome", type: "text", placeholder: "Nome", rules: [makeRule(alunoSchema, "nome")] },
+  { name: "email", type: "email", placeholder: "Email", rules: [makeRule(alunoSchema, "email")] },
+  { name: "curso", type: "text", placeholder: "Curso", rules: [makeRule(alunoSchema, "curso")] },
+  { name: "dataNascimento", type: "date", placeholder: "Data de Nascimento", rules: [makeRule(alunoSchema, "dataNascimento")] },
 ];
