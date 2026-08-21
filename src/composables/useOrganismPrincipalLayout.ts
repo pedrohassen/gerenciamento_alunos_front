@@ -2,6 +2,7 @@ import { ref } from "vue";
 import { useRouter, type RouteLocationRaw } from "vue-router";
 import { handleLogout } from "../services/authHandlers";
 import { menuItens } from "../utils/navigation";
+import { getUserRoleFromToken } from "../services/tokenService";
 
 export function useOrganismPrincipalLayout() {
   const drawerOpen = ref(false);
@@ -20,7 +21,9 @@ export function useOrganismPrincipalLayout() {
     });
   };
 
-  const navigationItens = menuItens;
+  const navigationItens = menuItens.filter(
+    (item) => !item.adminOnly || getUserRoleFromToken() === "ADMIN"
+  );
 
   const navigateTo = async (rota: RouteLocationRaw) => {
     try {
