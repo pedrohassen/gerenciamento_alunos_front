@@ -4,4 +4,5 @@ export type MenuItem = {
   text: string;
   icon?: string;
   route: RouteLocationRaw;
+  adminOnly?: boolean;
 };
