@@ -9,8 +9,8 @@ export const handleLogin = async (email: string, password: string, setLoading: (
     await login(email, password);
     router.push("/home");
   } catch (err: any) {
-    if (err?.errors) {
-      alert("Erro no formulário: " + err.errors.map((e: any) => e.message).join(", "));
+    if (err?.issues) {
+      alert("Erro no formulário: " + err.issues.map((e: any) => e.message).join(", "));
     } else {
       alert("Falha no login: " + (err.response?.data?.mensagem || err.message));
     }
@@ -32,8 +32,8 @@ export const handleRegister = async (
     await register(name, email, password);
     router.push("/home");
   } catch (err: any) {
-    if (err?.errors) {
-      alert("Erro no formulário: " + err.errors.map((e: any) => e.message).join(", "));
+    if (err?.issues) {
+      alert("Erro no formulário: " + err.issues.map((e: any) => e.message).join(", "));
     } else {
       alert("Falha no cadastro: " + (err.response?.data?.mensagem || err.message));
     }
