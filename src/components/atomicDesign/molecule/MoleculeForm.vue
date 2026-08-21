@@ -1,10 +1,10 @@
 <template>
-  <v-card class="pa-4" width="40%">
+  <v-card class="pa-4" :width="width">
     <v-card-title>
       <AtomText tag="h1" class="text-h5">{{ pageTitle }}</AtomText>
     </v-card-title>
 
-    <v-card-title>
+    <v-card-title v-if="title">
       <AtomText tag="h2" class="text-h6">{{ title }}</AtomText>
     </v-card-title>
 
@@ -55,6 +55,7 @@ export default defineComponent({
     buttonText: { type: String, required: true },
     buttonTextColor: { type: String, default: "white" },
     buttonColor: { type: String, default: "primary" },
+    width: { type: String, default: "40%" },
     inputs: { type: Array as PropType<InputConfig[]>, required: true },
     values: { type: Object as PropType<Record<string, any>>, required: true },
     loading: { type: Boolean, required: true },
