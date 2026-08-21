@@ -2,6 +2,12 @@
 
 Front-end do sistema de gerenciamento de alunos ("LearningLoop"), feito em Vue 3 + TypeScript. Consome a API em [`gerenciamento_alunos_api`](../gerenciamento_alunos_api) (ASP.NET Core), que precisa estar rodando pra a aplicação funcionar de verdade.
 
+## 🔗 Aplicação no ar
+
+**[gerenciamento-alunos-front.vercel.app](https://gerenciamento-alunos-front.vercel.app)**
+
+Front na Vercel, API no Render (free tier), banco no Supabase. Como a API está no plano gratuito do Render, ela "dorme" depois de ~15min sem uso — a primeira requisição depois disso pode levar 30-50s pra responder (as seguintes voltam ao normal).
+
 ## Stack
 
 - [Vue 3](https://vuejs.org/) (Composition API) + [TypeScript](https://www.typescriptlang.org/)
