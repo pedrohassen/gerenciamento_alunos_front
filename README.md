@@ -62,7 +62,7 @@ O login (`POST /Usuario/login`) retorna um JWT, guardado em cookie (`js-cookie`)
 
 O token carrega duas claims usadas pelo front:
 - **id do usuário** — claim padrão `sub`.
-- **perfil** (`USER`/`ADMIN`) — claim com a URI completa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` (não `role`), porque é assim que a API monta o token. Ver `src/services/tokenService.ts`.
+- **perfil** (`USER`/`ADMIN`) — claim com a URI completa `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` (não `role`), porque é assim que a API monta o token. Ver `src/services/tokenService.ts`.
 
 Rotas protegidas (`src/router/index.ts`):
 - Qualquer rota sob `/` (exceto `/login` e `/register`) exige token válido — sem token ou com token expirado, redireciona pra `/login`.

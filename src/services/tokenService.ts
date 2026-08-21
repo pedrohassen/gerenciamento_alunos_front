@@ -3,8 +3,10 @@ import { getToken } from "./authService";
 
 // A API monta o claim de perfil com Claim(ClaimTypes.Role, ...) e escreve o token
 // direto via `new JwtSecurityToken(issuer, audience, claims, ...)`, sem mapeamento
-// outbound — por isso a chave no payload é a URI completa, não "role".
-const ROLE_CLAIM = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role";
+// outbound — por isso a chave no payload é a URI completa que ClaimTypes.Role
+// realmente serializa (confirmado decodificando um token real gerado pela API em
+// produção), não "role" nem a URI do schema antigo do xmlsoap.org.
+const ROLE_CLAIM = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
 
 interface TokenPayload {
   sub: string;
