@@ -1,10 +1,10 @@
 <template>
   <v-text-field
-    :value="modelValue"
+    :model-value="modelValue"
     :type="type"
     :placeholder="placeholder"
     class="classic-input"
-    @input="onInput"
+    @update:model-value="onInput"
     :rules="rules"
     hide-details="auto"
     style="width: 100%;"
@@ -36,11 +36,8 @@ export default defineComponent({
   },
   emits: ["update:modelValue"],
   setup(_props, { emit }) {
-    const onInput = (event: Event) => {
-      const target = event.target as HTMLInputElement | null;
-      if (target) {
-        emit("update:modelValue", target.value);
-      }
+    const onInput = (value: string) => {
+      emit("update:modelValue", value);
     };
 
     return { onInput };
