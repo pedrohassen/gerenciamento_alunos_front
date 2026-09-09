@@ -29,14 +29,14 @@ export default defineComponent({
 
 <style scoped>
 .atom-link {
-  color: #1976d2;
+  color: rgb(var(--v-theme-primary));
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .atom-link:hover {
-  color: #115293;
+  color: rgb(var(--v-theme-primary-darken-1));
   text-decoration: underline;
 }
 </style>

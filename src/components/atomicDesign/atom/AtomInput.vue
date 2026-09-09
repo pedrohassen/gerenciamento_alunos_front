@@ -2,12 +2,11 @@
   <v-text-field
     :model-value="modelValue"
     :type="type"
+    :label="placeholder"
     :placeholder="placeholder"
-    class="classic-input"
-    @update:model-value="onInput"
     :rules="rules"
     hide-details="auto"
-    style="width: 100%;"
+    @update:model-value="onInput"
   ></v-text-field>
 </template>
 
@@ -32,7 +31,7 @@ export default defineComponent({
     rules: {
       type: Array as PropType<((value: any) => true | string)[]>,
       default: () => [],
-    }
+    },
   },
   emits: ["update:modelValue"],
   setup(_props, { emit }) {
@@ -44,36 +43,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.classic-input {
-  width: 100%;
-  padding: 5px 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  outline: none;
-  background-color: #fff;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.classic-input:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 4px rgba(25, 118, 210, 0.3);
-}
-
-.classic-input-error {
-  border-color: #f44336;
-}
-
-.classic-input ::v-deep(.v-input__slot) {
-  width: 100% !important;
-}
-
-.classic-input ::v-deep(input) {
-  width: 100% !important;
-}
-
-</style>
-

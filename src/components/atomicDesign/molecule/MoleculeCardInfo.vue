@@ -1,40 +1,38 @@
 <template>
-  <v-card class="pa-6 mx-auto info-card" max-width="500" elevation="2">
-    <v-card-title v-if="title" class="text-h5 text-center">
-      <AtomText tag="h5">{{ title }}</AtomText>
-    </v-card-title>
+  <v-card class="pa-0 info-card" max-width="520">
+    <div v-if="title" class="info-card__header">
+      <AtomText tag="h2" class="text-h6 font-weight-bold">{{ title }}</AtomText>
+    </div>
 
-    <v-divider v-if="title" class="mb-4"></v-divider>
-
-    <v-card-text>
+    <div class="info-card__body">
       <div v-for="item in items" :key="item.label" class="info-row">
-        <AtomText tag="span" class="label">{{ item.label }}:</AtomText>
+        <AtomText tag="span" class="info-row__label">{{ item.label }}</AtomText>
 
         <template v-if="item.type === 'chip'">
-          <v-chip :color="item.color || 'primary'" small class="ml-2">
+          <v-chip :color="item.color || 'primary'" variant="tonal" size="small">
             {{ item.value }}
           </v-chip>
         </template>
 
         <template v-else-if="item.type === 'boolean'">
-          <v-chip :color="item.value ? 'green' : 'red'" small class="ml-2">
-            {{ item.value ? 'Active' : 'Inactive' }}
+          <v-chip :color="item.value ? 'success' : 'error'" variant="tonal" size="small">
+            {{ item.value ? 'Ativo' : 'Inativo' }}
           </v-chip>
         </template>
 
         <template v-else-if="item.type === 'date'">
-          <AtomText tag="span" class="value">{{ formatDate(item.value) }}</AtomText>
+          <AtomText tag="span" class="info-row__value">{{ formatDate(item.value) }}</AtomText>
         </template>
 
         <template v-else>
-          <AtomText tag="span" class="value">{{ item.value }}</AtomText>
+          <AtomText tag="span" class="info-row__value">{{ item.value }}</AtomText>
         </template>
       </div>
-    </v-card-text>
+    </div>
 
-    <v-card-actions class="justify-center">
+    <div v-if="$slots.actions" class="info-card__actions">
       <slot name="actions"></slot>
-    </v-card-actions>
+    </div>
   </v-card>
 </template>
 
@@ -53,7 +51,7 @@ export default defineComponent({
   },
   methods: {
     formatDate(date: string | Date) {
-      return format(new Date(date), "dd/MM/yyyy HH:mm");
+      return format(new Date(date), "dd/MM/yyyy 'às' HH:mm");
     },
   },
 });
@@ -61,22 +59,49 @@ export default defineComponent({
 
 <style scoped>
 .info-card {
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.info-card__header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+.info-card__body {
+  padding: 8px 24px;
 }
 
 .info-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  gap: 16px;
+  padding: 14px 0;
 }
 
-.label {
-  font-weight: 500;
-  color: #555;
+.info-row + .info-row {
+  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
 }
 
-.value {
-  color: #333;
+.info-row__label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(var(--v-theme-on-surface), 0.55);
+}
+
+.info-row__value {
+  font-size: 0.95rem;
+  color: rgb(var(--v-theme-on-surface));
+  text-align: right;
+}
+
+.info-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
 }
 </style>

@@ -1,15 +1,24 @@
 <template>
   <div class="organism-profile">
+    <header class="organism-profile__header">
+      <AtomText tag="h1" class="text-h4 font-weight-bold d-block">{{ title }}</AtomText>
+      <AtomText tag="p" class="text-body-2 text-medium-emphasis d-block mt-1">
+        Seus dados de acesso ao sistema.
+      </AtomText>
+    </header>
+
     <v-progress-circular v-if="loading && !user" indeterminate color="primary" class="mt-8" />
 
-    <v-alert v-else-if="error" type="error" class="mt-8" max-width="500">
+    <v-alert v-else-if="error" type="error" class="mt-8" max-width="520">
       {{ error }}
     </v-alert>
 
-    <MoleculeCardInfo v-else :title="title" :items="items">
+    <MoleculeCardInfo v-else title="Informações da conta" :items="items">
       <template #actions>
-        <AtomButton @click="openEditDialog">Editar Perfil</AtomButton>
-        <AtomButton @click="openPasswordDialog">Alterar Senha</AtomButton>
+        <AtomButton buttonColor="primary" @click="openEditDialog">Editar Perfil</AtomButton>
+        <AtomButton buttonColor="secondary" variant="tonal" @click="openPasswordDialog">
+          Alterar Senha
+        </AtomButton>
       </template>
     </MoleculeCardInfo>
 
@@ -48,6 +57,7 @@ import { defineComponent, computed, ref } from "vue";
 import MoleculeCardInfo from "../molecule/MoleculeCardInfo.vue";
 import MoleculeForm from "../molecule/MoleculeForm.vue";
 import AtomButton from "../atom/AtomButton.vue";
+import AtomText from "../atom/AtomText.vue";
 import { useProfile } from "../../../composables/useProfile";
 import { useEditProfileForm } from "../../../composables/useEditProfileForm";
 import { useChangePasswordForm } from "../../../composables/useChangePasswordForm";
@@ -57,8 +67,8 @@ import type { InfoItem } from "../../../utils/types/cards";
 
 export default defineComponent({
   name: "OrganismProfile",
-  components: { MoleculeCardInfo, MoleculeForm, AtomButton },
-  props: { title: { type: String, default: "User Profile" } },
+  components: { MoleculeCardInfo, MoleculeForm, AtomButton, AtomText },
+  props: { title: { type: String, default: "Meu perfil" } },
   setup() {
     const { user, loading, error, fetchUser } = useProfile();
 
@@ -143,7 +153,11 @@ export default defineComponent({
 .organism-profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+  align-items: flex-start;
+  max-width: 520px;
+}
+
+.organism-profile__header {
+  margin-bottom: 24px;
 }
 </style>
