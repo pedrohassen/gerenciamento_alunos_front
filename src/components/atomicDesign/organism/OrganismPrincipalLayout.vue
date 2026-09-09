@@ -2,17 +2,22 @@
   <v-app>
     <MoleculeSuperiorMenu :title="title" @toggleDrawer="toggleDrawer">
       <template #actions>
-        <AtomButton buttonColor="transparent" buttonTextColor="#fff" @click="logout">
-          <AtomText tag="span" size="14px" weight="600" color="#fff">
-            {{ logoutText }}
-          </AtomText>
+        <AtomButton
+          buttonColor="secondary"
+          variant="text"
+          size="small"
+          @click="logout"
+        >
+          <AtomIcon name="logout" size="18" class="mr-1" />
+          {{ logoutText }}
         </AtomButton>
       </template>
     </MoleculeSuperiorMenu>
+
     <MoleculeLateralMenu v-model="drawerOpen" :itens="navigationItens" @navigate="navigateTo" />
 
     <v-main>
-      <v-container fluid>
+      <v-container class="layout-container">
         <router-view />
       </v-container>
     </v-main>
@@ -24,12 +29,12 @@ import { defineComponent } from 'vue';
 import MoleculeLateralMenu from '../molecule/MoleculeLateralMenu.vue';
 import MoleculeSuperiorMenu from '../molecule/MoleculeSuperiorMenu.vue';
 import AtomButton from '../atom/AtomButton.vue';
-import AtomText from '../atom/AtomText.vue';
+import AtomIcon from '../atom/AtomIcon.vue';
 import { useOrganismPrincipalLayout } from '../../../composables/useOrganismPrincipalLayout';
 
 export default defineComponent({
   name: 'OrganismPrincipalLayout',
-  components: { MoleculeSuperiorMenu, MoleculeLateralMenu, AtomButton, AtomText },
+  components: { MoleculeSuperiorMenu, MoleculeLateralMenu, AtomButton, AtomIcon },
   props: {
     title: { type: String, default: 'Minha Aplicação' }
   },
@@ -38,3 +43,16 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.layout-container {
+  max-width: 1120px;
+  padding: 32px 24px 48px;
+}
+
+@media (max-width: 600px) {
+  .layout-container {
+    padding: 20px 16px 32px;
+  }
+}
+</style>

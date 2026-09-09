@@ -3,7 +3,9 @@
     :loading="loading"
     :disabled="disabled"
     :color="buttonColor"
-    :style="{ color: buttonTextColor }"
+    :variant="variant"
+    :size="size"
+    :style="buttonTextColor ? { color: buttonTextColor } : undefined"
     @click="$emit('click')"
   >
     <slot />
@@ -11,28 +13,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, type PropType } from "vue";
+
+type ButtonVariant = "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain";
 
 export default defineComponent({
   name: "AtomButton",
   props: {
     buttonColor: {
       type: String,
-      default: "primary"
+      default: "primary",
     },
     buttonTextColor: {
       type: String,
-      default: "white"
+      default: "",
+    },
+    variant: {
+      type: String as PropType<ButtonVariant>,
+      default: "flat",
+    },
+    size: {
+      type: String,
+      default: "default",
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  emits: ["click"]
+  emits: ["click"],
 });
 </script>

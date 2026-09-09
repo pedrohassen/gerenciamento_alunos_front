@@ -1,11 +1,23 @@
 <template>
   <div class="organism-alunos">
-    <div class="filtros">
+    <header class="organism-alunos__header">
+      <div>
+        <AtomText tag="h1" class="text-h4 font-weight-bold d-block">Alunos</AtomText>
+        <AtomText tag="p" class="text-body-2 text-medium-emphasis d-block mt-1">
+          Cadastro e acompanhamento dos alunos registrados.
+        </AtomText>
+      </div>
+      <AtomButton buttonColor="primary" @click="openCreateDialog">
+        <AtomIcon name="add" size="18" class="mr-1" />
+        Novo Aluno
+      </AtomButton>
+    </header>
+
+    <v-card class="filtros pa-4">
       <AtomInput v-model="nomeFiltro" type="text" placeholder="Buscar por nome" class="filtro-input" />
       <AtomInput v-model="cursoFiltro" type="text" placeholder="Buscar por curso" class="filtro-input" />
-      <AtomButton @click="buscar">Buscar</AtomButton>
-      <AtomButton buttonColor="#006400" @click="openCreateDialog">Novo Aluno</AtomButton>
-    </div>
+      <AtomButton buttonColor="secondary" variant="tonal" @click="buscar">Buscar</AtomButton>
+    </v-card>
 
     <v-progress-circular v-if="loading && alunos.length === 0" indeterminate color="primary" class="mt-8" />
 
@@ -26,8 +38,22 @@
       />
 
       <div class="paginacao">
-        <AtomButton :disabled="pagina === 0" @click="paginaAnterior">Anterior</AtomButton>
-        <AtomButton :disabled="!temProximaPagina" @click="proximaPagina">Próxima</AtomButton>
+        <AtomButton
+          buttonColor="secondary"
+          variant="text"
+          :disabled="pagina === 0"
+          @click="paginaAnterior"
+        >
+          Anterior
+        </AtomButton>
+        <AtomButton
+          buttonColor="secondary"
+          variant="text"
+          :disabled="!temProximaPagina"
+          @click="proximaPagina"
+        >
+          Próxima
+        </AtomButton>
       </div>
     </template>
 
@@ -66,6 +92,8 @@ import MoleculeAlunosTable from "../molecule/MoleculeAlunosTable.vue";
 import MoleculeForm from "../molecule/MoleculeForm.vue";
 import AtomButton from "../atom/AtomButton.vue";
 import AtomInput from "../atom/AtomInput.vue";
+import AtomText from "../atom/AtomText.vue";
+import AtomIcon from "../atom/AtomIcon.vue";
 import { useAlunosList } from "../../../composables/useAlunosList";
 import { useAlunoForm } from "../../../composables/useAlunoForm";
 import { handleDeletarAluno } from "../../../services/alunoHandlers";
@@ -75,7 +103,7 @@ import type { Aluno } from "../../../utils/types/aluno";
 
 export default defineComponent({
   name: "OrganismAlunos",
-  components: { MoleculeAlunosTable, MoleculeForm, AtomButton, AtomInput },
+  components: { MoleculeAlunosTable, MoleculeForm, AtomButton, AtomInput, AtomText, AtomIcon },
   setup() {
     const {
       alunos,
@@ -180,26 +208,35 @@ export default defineComponent({
 <style scoped>
 .organism-alunos {
   width: 100%;
-  max-width: 900px;
-  margin: 20px auto;
+  max-width: 940px;
+}
+
+.organism-alunos__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .filtros {
   display: flex;
   gap: 12px;
-  align-items: center;
-  margin-bottom: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
 .filtro-input {
-  max-width: 220px;
+  flex: 1 1 200px;
+  max-width: 260px;
 }
 
 .paginacao {
   display: flex;
-  gap: 12px;
-  justify-content: center;
+  gap: 8px;
+  justify-content: flex-end;
   margin-top: 16px;
 }
 </style>

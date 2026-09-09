@@ -1,7 +1,7 @@
 <template>
-  <v-container class="d-flex justify-center align-center" style="height: 100vh;">
+  <div class="auth-view">
     <OrganismForm mode="login" />
-  </v-container>
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,3 +13,13 @@ export default defineComponent({
   components: { OrganismForm },
 });
 </script>
+
+<style scoped>
+.auth-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+</style>

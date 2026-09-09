@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex align-center justify-center w-100">
-    <AtomText tag="span" class="tamanho-fonte">{{ text }}</AtomText>
-    <AtomLink :to="to" class="ml-2 tamanho-fonte">{{ linkText }}</AtomLink>
+  <div class="text-link">
+    <AtomText tag="span" class="text-link__label">{{ text }}</AtomText>
+    <AtomLink :to="to" class="text-link__link">{{ linkText }}</AtomLink>
   </div>
 </template>
 
@@ -22,7 +22,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.tamanho-fonte {
-  font-size: 18px !important;
+.text-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.text-link__label {
+  color: rgba(var(--v-theme-on-surface), 0.6);
+}
+
+.text-link__link {
+  font-weight: 600;
 }
 </style>

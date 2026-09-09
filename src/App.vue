@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="fill-height">
+    <v-main>
       <router-view />
     </v-main>
   </v-app>
@@ -13,7 +13,9 @@ export default {};
 <style lang="scss">
 @import 'vuetify/styles';
 
-html, body, #app {
+html,
+body,
+#app {
   height: 100%;
   width: 100%;
   padding: 0;
@@ -22,6 +24,6 @@ html, body, #app {
 
 .v-application {
   min-height: 100vh;
-  min-width: 100vw;
+  background-color: rgb(var(--v-theme-background));
 }
 </style>

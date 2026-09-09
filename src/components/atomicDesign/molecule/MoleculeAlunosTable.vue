@@ -1,27 +1,45 @@
 <template>
-  <v-table class="alunos-table">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Curso</th>
-        <th>Data de Nascimento</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="aluno in alunos" :key="aluno.id">
-        <td><AtomText tag="span">{{ aluno.nome }}</AtomText></td>
-        <td><AtomText tag="span">{{ aluno.email }}</AtomText></td>
-        <td><AtomText tag="span">{{ aluno.curso }}</AtomText></td>
-        <td><AtomText tag="span">{{ formatDate(aluno.dataNascimento) }}</AtomText></td>
-        <td class="acoes">
-          <AtomButton buttonColor="primary" @click="$emit('editar', aluno)">Editar</AtomButton>
-          <AtomButton buttonColor="red" @click="$emit('excluir', aluno)">Excluir</AtomButton>
-        </td>
-      </tr>
-    </tbody>
-  </v-table>
+  <v-card class="alunos-table-card pa-0">
+    <v-table class="alunos-table" hover>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Curso</th>
+          <th>Nascimento</th>
+          <th class="text-right">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="aluno in alunos" :key="aluno.id">
+          <td>
+            <AtomText tag="span" class="font-weight-medium">{{ aluno.nome }}</AtomText>
+          </td>
+          <td><AtomText tag="span" class="text-medium-emphasis">{{ aluno.email }}</AtomText></td>
+          <td><AtomText tag="span">{{ aluno.curso }}</AtomText></td>
+          <td><AtomText tag="span">{{ formatDate(aluno.dataNascimento) }}</AtomText></td>
+          <td class="acoes">
+            <AtomButton
+              buttonColor="secondary"
+              variant="text"
+              size="small"
+              @click="$emit('editar', aluno)"
+            >
+              Editar
+            </AtomButton>
+            <AtomButton
+              buttonColor="error"
+              variant="text"
+              size="small"
+              @click="$emit('excluir', aluno)"
+            >
+              Excluir
+            </AtomButton>
+          </td>
+        </tr>
+      </tbody>
+    </v-table>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -51,14 +69,34 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.alunos-table-card {
+  overflow: hidden;
+}
+
 .alunos-table {
   width: 100%;
 }
 
+.alunos-table :deep(thead th) {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(var(--v-theme-on-surface), 0.55) !important;
+  background-color: rgb(var(--v-theme-surface-light));
+}
+
+.alunos-table :deep(tbody td) {
+  height: 56px;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .acoes {
   display: flex;
-  gap: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  gap: 4px;
+  justify-content: flex-end;
 }
 </style>

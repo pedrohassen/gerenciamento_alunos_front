@@ -10,8 +10,12 @@ export function useOrganismForm(initialType: FormType) {
   const type = ref<FormType>(initialType);
   const currentForm = computed<LoginFormValues | RegisterFormValues>(() => (type.value === "login" ? useLoginForm() : useRegisterForm()));
   const inputs = computed(() => (type.value === "login" ? loginInputs : registerInputs));
-  const pageTitle = "Gerenciamento de Alunos";
-  const title = computed(() => (type.value === "login" ? "Login" : "Cadastro de Usuário"));
+  const pageTitle = computed(() => (type.value === "login" ? "Entrar" : "Criar conta"));
+  const title = computed(() =>
+    type.value === "login"
+      ? "Acesse o painel com suas credenciais."
+      : "Preencha os dados abaixo para começar."
+  );
   const buttonText = computed(() => (type.value === "login" ? "Entrar" : "Cadastrar"));
 
   const values = computed(() =>
